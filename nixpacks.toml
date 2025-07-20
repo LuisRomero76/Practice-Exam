@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ['php82', 'php82Packages.composer']
+nixPkgs = ['php82', 'php82Packages.composer', 'apache', 'php82Extensions.pdo_sqlite']
 
 [phases.install]
 cmds = ['composer install --no-dev --optimize-autoloader']
@@ -8,8 +8,9 @@ cmds = ['composer install --no-dev --optimize-autoloader']
 cmds = [
     'mkdir -p runtime/logs runtime/cache web/assets',
     'chmod -R 755 runtime',
-    'chmod -R 755 web/assets'
+    'chmod -R 755 web/assets',
+    'chmod -R 755 web'
 ]
 
 [start]
-cmd = 'php -S 0.0.0.0:$PORT -t web'
+cmd = 'php -S 0.0.0.0:$PORT -t web web/index.php'
