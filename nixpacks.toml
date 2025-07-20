@@ -6,11 +6,10 @@ cmds = ['composer install --no-dev --optimize-autoloader --no-interaction']
 
 [phases.build]
 cmds = [
-    'mkdir -p web/assets',
-    'mkdir -p runtime',
-    'chmod -R 777 runtime',
-    'chmod -R 777 web/assets'
+    'mkdir -p runtime/logs runtime/cache web/assets',
+    'chmod -R 755 runtime',
+    'chmod -R 755 web/assets'
 ]
 
 [start]
-cmd = 'php -S 0.0.0.0:$PORT -t web web/index.php'
+cmd = 'php -S 0.0.0.0:$PORT -t web'
