@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ['php82', 'php82Packages.composer', 'apache', 'php82Extensions.pdo_sqlite']
+nixPkgs = ['php82', 'php82Packages.composer', 'php82Extensions.pdo_sqlite']
 
 [phases.install]
 cmds = ['composer install --no-dev --optimize-autoloader']
@@ -13,4 +13,4 @@ cmds = [
 ]
 
 [start]
-cmd = 'php -S 0.0.0.0:$PORT -t web web/index.php'
+cmd = 'php -S 0.0.0.0:$PORT -t web router.php'
