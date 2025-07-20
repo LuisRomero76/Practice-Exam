@@ -1,1 +1,1 @@
-web: vendor/bin/yii serve --port=$PORT --docroot=web
+web: php -S 0.0.0.0:$PORT -t web

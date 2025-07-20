@@ -2,14 +2,15 @@
 nixPkgs = ['php82', 'php82Packages.composer']
 
 [phases.install]
-cmds = ['composer install --no-dev --optimize-autoloader']
+cmds = ['composer install --no-dev --optimize-autoloader --no-interaction']
 
 [phases.build]
 cmds = [
     'mkdir -p web/assets',
-    'chmod 777 runtime',
-    'chmod 777 web/assets'
+    'mkdir -p runtime',
+    'chmod -R 777 runtime',
+    'chmod -R 777 web/assets'
 ]
 
 [start]
-cmd = 'php -S 0.0.0.0:$PORT -t web'
+cmd = 'php -S 0.0.0.0:$PORT -t web web/index.php'
