@@ -1,27 +1,31 @@
 <?php
-echo "<h1>PHP está funcionando correctamente!</h1>";
-echo "<p>Puerto: " . ($_ENV['PORT'] ?? $_SERVER['SERVER_PORT'] ?? 'No definido') . "</p>";
-echo "<p>PHP Version: " . phpversion() . "</p>";
-echo "<p>Directorio actual: " . __DIR__ . "</p>";
-echo "<p>Servidor: " . $_SERVER['SERVER_SOFTWARE'] ?? 'No definido' . "</p>";
-
-// Verificar que Yii2 se puede cargar
-if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
-    echo "<p style='color: green;'>✅ Composer autoload encontrado</p>";
-    require_once __DIR__ . '/../vendor/autoload.php';
-    
-    if (file_exists(__DIR__ . '/../vendor/yiisoft/yii2/Yii.php')) {
-        echo "<p style='color: green;'>✅ Yii2 encontrado</p>";
-        require_once __DIR__ . '/../vendor/yiisoft/yii2/Yii.php';
-        echo "<p style='color: green;'>✅ Yii2 cargado correctamente</p>";
-    } else {
-        echo "<p style='color: red;'>❌ Yii2 NO encontrado</p>";
+echo "<h1>🚀 Test de Deployment</h1>";
+echo "<h2>✅ PHP está funcionando!</h2>";
+echo "<p><strong>Versión PHP:</strong> " . phpversion() . "</p>";
+echo "<p><strong>Directorio actual:</strong> " . __DIR__ . "</p>";
+echo "<p><strong>Archivos en web/:</strong></p>";
+echo "<ul>";
+foreach (scandir(__DIR__) as $file) {
+    if ($file !== '.' && $file !== '..') {
+        echo "<li>$file</li>";
     }
+}
+echo "</ul>";
+
+echo "<h3>🔍 Test de Yii2:</h3>";
+if (file_exists(__DIR__ . '/index.php')) {
+    echo "✅ index.php existe<br>";
 } else {
-    echo "<p style='color: red;'>❌ Composer autoload NO encontrado</p>";
+    echo "❌ index.php NO existe<br>";
 }
 
-echo "<hr>";
-echo "<a href='/'>🏠 Ir a la página principal</a> | ";
-echo "<a href='/examen'>📝 Ir al examen</a>";
-?>
+if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
+    echo "✅ Composer autoload existe<br>";
+} else {
+    echo "❌ Composer autoload NO existe<br>";
+}
+
+echo "<h3>📋 Enlaces de prueba:</h3>";
+echo '<p><a href="/">🏠 Página Principal</a></p>';
+echo '<p><a href="/examen">📝 Sistema de Exámenes</a></p>';
+echo '<p><a href="/pokemon">🔴 API Pokemon</a></p>';
