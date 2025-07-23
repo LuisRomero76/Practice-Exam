@@ -17,7 +17,7 @@ class ExamenController extends Controller
      */
     public function actionIndex()
     {
-        $preguntas = Pregunta::getPreguntasExamen();
+        $preguntas = Pregunta::getPreguntasActivas();
         $categorias = Pregunta::getCategorias();
         
         return $this->render('index', [
@@ -46,13 +46,13 @@ class ExamenController extends Controller
         $session->set('respuestas_examen', []);
         $session->set('tiempo_inicio', time());
         
-        return $this->redirect(['pregunta', 'id' => 1]);
+        return $this->redirect(['pregunta', 'indice' => 1]);
     }
 
     /**
      * Mostrar pregunta específica
      */
-    public function actionPregunta($id)
+    public function actionPregunta($indice = 1)
     {
         $session = Yii::$app->session;
         
@@ -60,14 +60,12 @@ class ExamenController extends Controller
             return $this->redirect(['index']);
         }
         
-        $preguntas = Pregunta::getPreguntasExamen();
+        $preguntas = Pregunta::getPreguntasActivas();
         $pregunta = null;
         
-        foreach ($preguntas as $p) {
-            if ($p['id'] == $id) {
-                $pregunta = $p;
-                break;
-            }
+        // Buscar pregunta por índice consecutivo (1, 2, 3, etc.)
+        if ($indice >= 1 && $indice <= count($preguntas)) {
+            $pregunta = $preguntas[$indice - 1]; // Array es 0-indexed
         }
         
         if (!$pregunta) {
@@ -77,13 +75,13 @@ class ExamenController extends Controller
         
         $totalPreguntas = count($preguntas);
         $respuestasGuardadas = $session->get('respuestas_examen', []);
-        $preguntaActual = $id;
+        $preguntaActual = $indice;
         
         return $this->render('pregunta', [
             'pregunta' => $pregunta,
             'preguntaActual' => $preguntaActual,
             'totalPreguntas' => $totalPreguntas,
-            'respuestaGuardada' => $respuestasGuardadas[$id] ?? null
+            'respuestaGuardada' => $respuestasGuardadas[$pregunta['id']] ?? null
         ]);
     }
 
@@ -100,6 +98,7 @@ class ExamenController extends Controller
         }
         
         $preguntaId = $request->post('pregunta_id');
+        $indiceActual = $request->post('indice_actual', 1);
         $respuesta = $request->post('respuesta');
         $accion = $request->post('accion', 'guardar');
         
@@ -108,31 +107,20 @@ class ExamenController extends Controller
         $respuestas[$preguntaId] = $respuesta;
         $session->set('respuestas_examen', $respuestas);
         
-        $preguntas = Pregunta::getPreguntasExamen();
+        $preguntas = Pregunta::getPreguntasActivas();
         $totalPreguntas = count($preguntas);
-        
-        // Encontrar la pregunta actual
-        $preguntaActual = 1;
-        foreach ($preguntas as $index => $pregunta) {
-            if ($pregunta['id'] == $preguntaId) {
-                $preguntaActual = $index + 1;
-                break;
-            }
-        }
         
         // Manejar diferentes acciones
         switch ($accion) {
             case 'anterior':
-                if ($preguntaActual > 1) {
-                    $siguientePregunta = $preguntas[$preguntaActual - 2]; // -2 porque es base 0
-                    return $this->redirect(['pregunta', 'id' => $siguientePregunta['id']]);
+                if ($indiceActual > 1) {
+                    return $this->redirect(['pregunta', 'indice' => $indiceActual - 1]);
                 }
                 break;
                 
             case 'siguiente':
-                if ($preguntaActual < $totalPreguntas) {
-                    $siguientePregunta = $preguntas[$preguntaActual]; // +0 porque es base 0
-                    return $this->redirect(['pregunta', 'id' => $siguientePregunta['id']]);
+                if ($indiceActual < $totalPreguntas) {
+                    return $this->redirect(['pregunta', 'indice' => $indiceActual + 1]);
                 }
                 break;
                 
@@ -151,13 +139,13 @@ class ExamenController extends Controller
                 break;
         }
         
-        return $this->redirect(['pregunta', 'id' => $preguntaId]);
+        return $this->redirect(['pregunta', 'indice' => $indiceActual]);
     }
 
     /**
      * Navegar a pregunta específica
      */
-    public function actionNavegar($id)
+    public function actionNavegar($indice)
     {
         $session = Yii::$app->session;
         
@@ -165,7 +153,7 @@ class ExamenController extends Controller
             return $this->redirect(['index']);
         }
         
-        return $this->redirect(['pregunta', 'id' => $id]);
+        return $this->redirect(['pregunta', 'indice' => $indice]);
     }
 
     /**
@@ -208,7 +196,7 @@ class ExamenController extends Controller
         
         $session = Yii::$app->session;
         $respuestas = $session->get('respuestas_examen', []);
-        $preguntas = Pregunta::getPreguntasExamen();
+        $preguntas = Pregunta::getPreguntasActivas();
         
         return [
             'total' => count($preguntas),

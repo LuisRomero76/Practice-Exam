@@ -26,12 +26,38 @@ class Pregunta extends Model
     public $categoria;
 
     /**
+     * Obtiene solo las preguntas activas (no comentadas) con índices consecutivos
+     * @return array
+     */
+    public static function getPreguntasActivas()
+    {
+        $todasLasPreguntas = self::getPreguntasExamen();
+        $preguntasActivas = [];
+        $indice = 1;
+        
+        foreach ($todasLasPreguntas as $pregunta) {
+            // Solo incluir preguntas que tengan todos los campos requeridos
+            if (isset($pregunta['id']) && isset($pregunta['pregunta']) && isset($pregunta['tipo'])) {
+                // Crear una copia de la pregunta con nuevo índice
+                $preguntaActiva = $pregunta;
+                $preguntaActiva['indice'] = $indice;
+                $preguntasActivas[] = $preguntaActiva;
+                $indice++;
+            }
+        }
+        
+        return $preguntasActivas;
+    }
+
+    /**
      * Obtiene todas las preguntas del examen
      * @return array
      */
     public static function getPreguntasExamen()
     {
         return [
+            // PREGUNTAS COMENTADAS TEMPORALMENTE - YA DOMINADAS (1-13, 15-22, 25, 27, 29, 34, 35, 36, 39, 43, 45)
+            /*
             [
                 'id' => 1,
                 'pregunta' => 'Relacione cada amenaza con su tipo correspondiente (STRIDE)',
@@ -60,7 +86,8 @@ class Pregunta extends Model
                 ],
                 'explicacion' => 'Las relaciones correctas son: Descubrimiento → Sniffing, Spoofing → Navegación invisible, Repudio → Desfragmentación, Escalamiento → Usuario con privilegios, Tampering → SQL Injection.',
                 'categoria' => 'Seguridad - STRIDE'
-            ],
+            ],*/
+            /*
             [
                 'id' => 2,
                 'pregunta' => 'La materialidad de la evidencia en una auditoria se refiere a:',
@@ -194,8 +221,8 @@ class Pregunta extends Model
                 ],
                 'explicacion' => 'Las amenazas aprovechan las vulnerabilidades para generar riesgo en los activos informáticos.',
                 'categoria' => 'Gestión de Riesgos'
-            ],
-            [
+            ],*/
+            /*[
                 'id' => 10,
                 'pregunta' => 'Un principio de la auditoria operacional utilizada en la auditoria del sistema es:',
                 'tipo' => self::TIPO_SELECCION_UNICA,
@@ -248,7 +275,7 @@ class Pregunta extends Model
                 'respuesta_correcta' => 'verdadero',
                 'explicacion' => 'Cuando los controles son efectivos y reducen el riesgo, se requieren menos pruebas sustantivas.',
                 'categoria' => 'Auditoría'
-            ],
+            ],*/
             [
                 'id' => 14,
                 'pregunta' => 'Asocie correctamente en función a los objetivos de control que se buscan',
@@ -281,7 +308,7 @@ class Pregunta extends Model
                 'explicacion' => 'Cada tipo de control tiene objetivos específicos en la gestión de sistemas de información.',
                 'categoria' => 'Objetivos de Control'
             ],
-            [
+            /*[
                 'id' => 15,
                 'pregunta' => '¿Cuáles son características del control interno?',
                 'tipo' => self::TIPO_SELECCION_MULTIPLE,
@@ -341,8 +368,8 @@ class Pregunta extends Model
                 ],
                 'explicacion' => 'En un sistema de control de acceso biométrico: Elemento a controlar → el acceso al celular, Objetivo → lograr acceso autorizado, Control → sistema de huella digital, Sensor → subsistema de toma, Grupo de control → subsistema de comparación, Grupo activante → subsistema de acceso.',
                 'categoria' => 'Sistemas de Control'
-            ],
-            [
+            ],*/
+            /*[
                 'id' => 18,
                 'pregunta' => 'Para que un BCP se active, las operaciones en cuestión deben ser las operaciones _____ del negocio.',
                 'tipo' => self::TIPO_COMPLETAR,
@@ -409,7 +436,7 @@ class Pregunta extends Model
                 'respuesta_correcta' => 'c',
                 'explicacion' => 'Un ROI del 50% significa que por cada peso invertido, recuperas tu inversión inicial más 50% adicional (medio peso más).',
                 'categoria' => 'Análisis Financiero'
-            ],
+            ],*/
             [
                 'id' => 23,
                 'pregunta' => 'Asocie correctamente cada elemento con su tipo de control correspondiente',
@@ -469,7 +496,7 @@ class Pregunta extends Model
                 'explicacion' => 'Cada escenario amenaza un principio de seguridad específico: sin auditoría → no repudio, escalamiento de privilegios → autenticidad, acceso físico → integridad, robo de contraseñas → confidencialidad, pérdida física → disponibilidad.',
                 'categoria' => 'Principios de Seguridad'
             ],
-            [
+            /*[
                 'id' => 25,
                 'pregunta' => 'Según COBIT, que la información sea relevante y pertinente para los procesos de negocio y se proporcione de una manera oportuna, consistente y utilizable se refiere a:',
                 'tipo' => self::TIPO_SELECCION_UNICA,
@@ -482,7 +509,7 @@ class Pregunta extends Model
                 'respuesta_correcta' => 'b',
                 'explicacion' => 'La eficacia en COBIT se refiere a que la información sea relevante, pertinente, oportuna, consistente y utilizable para los procesos de negocio.',
                 'categoria' => 'COBIT'
-            ],
+            ],*/
             [
                 'id' => 26,
                 'pregunta' => 'Asocie Objetivo de control con Dominio Val IT',
@@ -506,7 +533,7 @@ class Pregunta extends Model
                 'explicacion' => 'En VAL IT: Gestión de la Inversión define casos de negocio, Gobierno de Valor define características de cartera, y Gestión de la Cartera evalúa y prioriza inversiones.',
                 'categoria' => 'VAL IT'
             ],
-            [
+            /*[
                 'id' => 27,
                 'pregunta' => 'Etapa ITIL donde se provee un servicio de atención al cliente:',
                 'tipo' => self::TIPO_SELECCION_UNICA,
@@ -519,7 +546,7 @@ class Pregunta extends Model
                 'respuesta_correcta' => 'c',
                 'explicacion' => 'La operación del servicio es la etapa donde se proveen los servicios de atención al cliente y se ejecutan las operaciones diarias.',
                 'categoria' => 'ITIL'
-            ],
+            ],*/
             [
                 'id' => 28,
                 'pregunta' => 'Cuál de las siguientes expresa mejor la diferencia entre tratamiento del riesgo y mitigación del riesgo:',
@@ -534,7 +561,7 @@ class Pregunta extends Model
                 'explicacion' => 'La mitigación puede reducir tanto la probabilidad como el impacto del riesgo, mientras que el tratamiento es un concepto más amplio que incluye mitigación, aceptación, transferencia y evitación.',
                 'categoria' => 'Gestión de Riesgos'
             ],
-            [
+            /*[
                 'id' => 29,
                 'pregunta' => 'Cómo se complementa la ISO27001 con la ISO27002, o sea en qué etapa de la implementación de la ISO27001 se incluye o utiliza en mayor medida la ISO27002?',
                 'tipo' => self::TIPO_SELECCION_UNICA,
@@ -547,7 +574,7 @@ class Pregunta extends Model
                 'respuesta_correcta' => 'b',
                 'explicacion' => 'ISO27002 proporciona controles específicos que se utilizan principalmente en la fase de tratamiento de riesgos de ISO27001.',
                 'categoria' => 'ISO 27001/27002'
-            ],
+            ],*/
             [
                 'id' => 30,
                 'pregunta' => 'Cuáles de los siguientes son elementos en común que tienen los modelos o estándares de control genéricos vistos (ITIL, COBIT, ISO27001, ISO27002):',
@@ -605,7 +632,7 @@ class Pregunta extends Model
                 'explicacion' => 'Aunque técnicamente es posible usar ISO27002 independientemente, pierde su efectividad sin el marco de gestión de ISO27001.',
                 'categoria' => 'ISO 27001/27002'
             ],
-            [
+            /*[
                 'id' => 34,
                 'pregunta' => 'COBIT 5 es la integración de COBIT 4.1 junto a los modelos VAL IT y RISK IT, que permiten una separación clara entre de la Gobernanza y Gestión de TI',
                 'tipo' => self::TIPO_VERDADERO_FALSO,
@@ -640,7 +667,7 @@ class Pregunta extends Model
                 'respuesta_correcta' => 'estudiante',
                 'explicacion' => 'En un sistema de control académico, el estudiante es el grupo activante que debe responder a las acciones correctivas del docente.',
                 'categoria' => 'Sistemas de Control'
-            ],
+            ],*/
             [
                 'id' => 37,
                 'pregunta' => 'Un programador que también es usuario de una aplicación que él mismo desarrolló para una empresa, podría cometer fraude aprovechando su doble rol. Valor amenazado:',
@@ -669,7 +696,7 @@ class Pregunta extends Model
                 'explicacion' => 'El escalamiento de privilegios compromete la autenticidad al permitir que alguien actúe con credenciales que no le corresponden.',
                 'categoria' => 'Principios de Seguridad'
             ],
-            [
+            /*[
                 'id' => 39,
                 'pregunta' => 'Si la variable observada es un número de 8 dígitos pasando por la sintaxis semántica y relevancia, un ejemplo de información en relación a esa variable podría ser:',
                 'tipo' => self::TIPO_SELECCION_UNICA,
@@ -682,7 +709,7 @@ class Pregunta extends Model
                 'respuesta_correcta' => 'd',
                 'explicacion' => 'La información más completa incluye contexto específico y relevancia personal, como la relación académica.',
                 'categoria' => 'Gestión de Información'
-            ],
+            ],*/
             [
                 'id' => 40,
                 'pregunta' => 'Cuáles de los siguientes son un control de influencia directiva:',
@@ -725,7 +752,7 @@ class Pregunta extends Model
                 'explicacion' => 'En COBIT: los procesos de TI (no recursos) proveen información, y las necesidades del negocio conducen las inversiones en TI.',
                 'categoria' => 'COBIT'
             ],
-            [
+            /*[
                 'id' => 43,
                 'pregunta' => 'Además de la ISO31000, para la gestión de riesgos, el auditor puede utilizar otro estándar ISO muy conocido y muy aplicable a todo entorno de control, este estándar es la ISO:',
                 'tipo' => self::TIPO_COMPLETAR,
@@ -733,7 +760,7 @@ class Pregunta extends Model
                 'respuesta_correcta' => '27005',
                 'explicacion' => 'ISO 27005 es el estándar específico para gestión de riesgos de seguridad de la información.',
                 'categoria' => 'Estándares ISO'
-            ],
+            ],*/
             [
                 'id' => 44,
                 'pregunta' => 'Si el emisor encripta un mensaje con la clave pública del receptor, entonces se garantiza:',
@@ -748,7 +775,7 @@ class Pregunta extends Model
                 'explicacion' => 'Encriptar con la clave pública del receptor garantiza que solo él puede descifrarlo con su clave privada, asegurando confidencialidad.',
                 'categoria' => 'Criptografía'
             ],
-            [
+            /*[
                 'id' => 45,
                 'pregunta' => 'Qué algoritmos se podrían usar en una firma digital:',
                 'tipo' => self::TIPO_SELECCION_UNICA,
@@ -761,7 +788,7 @@ class Pregunta extends Model
                 'respuesta_correcta' => 'a',
                 'explicacion' => 'Las firmas digitales requieren algoritmos asimétricos (para firmar/verificar) y de hashing (para resumir el mensaje).',
                 'categoria' => 'Criptografía'
-            ],
+            ],*/
             [
                 'id' => 46,
                 'pregunta' => 'Asocie Proceso con Actividad relacionada en función a su objetivo de control',
@@ -799,6 +826,38 @@ class Pregunta extends Model
                 ],
                 'explicacion' => 'Cada actividad se relaciona con su proceso COBIT correspondiente: ISO31000→PO9, POA→PO5, TDD→PO11, planificación→PO1, ASFI→PO8, activos→PO2, segregación→PO4, alternativas→PO3.',
                 'categoria' => 'Procesos COBIT'
+            ],
+            [
+                'id' => 47,
+                'pregunta' => 'Ordene correctamente el proceso de una auditoría:',
+                'tipo' => self::TIPO_RELACIONAR,
+                'conceptos' => [
+                    'paso_1' => 'Primer paso',
+                    'paso_2' => 'Segundo paso',
+                    'paso_3' => 'Tercer paso',
+                    'paso_4' => 'Cuarto paso',
+                    'paso_5' => 'Quinto paso',
+                    'paso_6' => 'Sexto paso'
+                ],
+                'opciones_select' => [
+                    '' => 'Seleccione una opción...',
+                    'recoleccion_evidencia' => 'Recolección de evidencia',
+                    'informe_auditoria' => 'Informe de auditoría',
+                    'programa_auditoria' => 'Programa de auditoría',
+                    'evaluacion_fortalezas_debilidades' => 'Evaluación de fortalezas y debilidades del control',
+                    'planeacion' => 'Planeación',
+                    'monitoreo' => 'Monitoreo'
+                ],
+                'respuesta_correcta' => [
+                    'paso_1' => 'planeacion',
+                    'paso_2' => 'programa_auditoria',
+                    'paso_3' => 'recoleccion_evidencia',
+                    'paso_4' => 'evaluacion_fortalezas_debilidades',
+                    'paso_5' => 'informe_auditoria',
+                    'paso_6' => 'monitoreo'
+                ],
+                'explicacion' => 'El proceso correcto de auditoría es: 1) Planeación (definir objetivos y alcance), 2) Programa de auditoría (diseñar procedimientos), 3) Recolección de evidencia (ejecutar pruebas), 4) Evaluación de fortalezas y debilidades del control (análisis), 5) Informe de auditoría (reportar hallazgos), 6) Monitoreo (seguimiento de recomendaciones).',
+                'categoria' => 'Proceso de Auditoría'
             ]
         ];
     }
@@ -827,7 +886,7 @@ class Pregunta extends Model
      */
     public static function validarRespuesta($preguntaId, $respuesta)
     {
-        $preguntas = self::getPreguntasExamen();
+        $preguntas = self::getPreguntasActivas();
         $pregunta = null;
         
         foreach ($preguntas as $p) {
@@ -887,7 +946,7 @@ class Pregunta extends Model
      */
     public static function calcularPuntaje($respuestas)
     {
-        $preguntas = self::getPreguntasExamen();
+        $preguntas = self::getPreguntasActivas();
         $totalPreguntas = count($preguntas);
         $correctas = 0;
         $resultados = [];

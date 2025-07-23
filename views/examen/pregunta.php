@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="row">
                         <?php for ($i = 1; $i <= $totalPreguntas; $i++): ?>
                             <div class="col-4 mb-2">
-                                <?= Html::a($i, ['examen/navegar', 'id' => $i], [
+                                <?= Html::a($i, ['examen/navegar', 'indice' => $i], [
                                     'class' => 'btn btn-sm ' . ($i == $preguntaActual ? 'btn-primary' : 'btn-outline-secondary'),
                                     'style' => 'width: 100%;'
                                 ]) ?>
@@ -90,6 +90,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= Html::beginForm(['examen/responder'], 'post', ['id' => 'form-pregunta']) ?>
                     
                     <?= Html::hiddenInput('pregunta_id', $pregunta['id']) ?>
+                    <?= Html::hiddenInput('indice_actual', $preguntaActual) ?>
                     <?= Html::hiddenInput('accion', '', ['id' => 'input-accion']) ?>
                     
                     <!-- Diferentes tipos de preguntas -->
