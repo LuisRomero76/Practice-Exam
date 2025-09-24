@@ -32,7 +32,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <header id="header">
     <?php
     NavBar::begin([
-        'brandLabel' => 'Pokédex & Examen',
+        'brandLabel' => 'Examen',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => ['class' => 'navbar-expand-md navbar-dark bg-dark fixed-top']
     ]);
@@ -40,13 +40,6 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         'options' => ['class' => 'navbar-nav'],
         'items' => [
             ['label' => 'Inicio', 'url' => ['/site/index']],
-            [
-                'label' => 'Pokédex',
-                'items' => [
-                    ['label' => 'Lista de Pokémon', 'url' => ['/pokemon/index']],
-                    ['label' => 'Buscar Pokémon', 'url' => ['/pokemon/search']],
-                ]
-            ],
             [
                 'label' => 'Examen',
                 'items' => [

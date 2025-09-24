@@ -56,8 +56,7 @@ class Pregunta extends Model
     public static function getPreguntasExamen()
     {
         return [
-            // PREGUNTAS COMENTADAS TEMPORALMENTE - YA DOMINADAS (1-13, 15-22, 25, 27, 29, 34, 35, 36, 39, 43, 45)
-            /*
+            // TODAS LAS PREGUNTAS ACTIVAS:
             [
                 'id' => 1,
                 'pregunta' => 'Relacione cada amenaza con su tipo correspondiente (STRIDE)',
@@ -86,8 +85,7 @@ class Pregunta extends Model
                 ],
                 'explicacion' => 'Las relaciones correctas son: Descubrimiento → Sniffing, Spoofing → Navegación invisible, Repudio → Desfragmentación, Escalamiento → Usuario con privilegios, Tampering → SQL Injection.',
                 'categoria' => 'Seguridad - STRIDE'
-            ],*/
-            /*
+            ],
             [
                 'id' => 2,
                 'pregunta' => 'La materialidad de la evidencia en una auditoria se refiere a:',
@@ -221,8 +219,8 @@ class Pregunta extends Model
                 ],
                 'explicacion' => 'Las amenazas aprovechan las vulnerabilidades para generar riesgo en los activos informáticos.',
                 'categoria' => 'Gestión de Riesgos'
-            ],*/
-            /*[
+            ],
+            [
                 'id' => 10,
                 'pregunta' => 'Un principio de la auditoria operacional utilizada en la auditoria del sistema es:',
                 'tipo' => self::TIPO_SELECCION_UNICA,
@@ -275,7 +273,7 @@ class Pregunta extends Model
                 'respuesta_correcta' => 'verdadero',
                 'explicacion' => 'Cuando los controles son efectivos y reducen el riesgo, se requieren menos pruebas sustantivas.',
                 'categoria' => 'Auditoría'
-            ],*/
+            ],
             [
                 'id' => 14,
                 'pregunta' => 'Asocie correctamente en función a los objetivos de control que se buscan',
@@ -308,7 +306,7 @@ class Pregunta extends Model
                 'explicacion' => 'Cada tipo de control tiene objetivos específicos en la gestión de sistemas de información.',
                 'categoria' => 'Objetivos de Control'
             ],
-            /*[
+            [
                 'id' => 15,
                 'pregunta' => '¿Cuáles son características del control interno?',
                 'tipo' => self::TIPO_SELECCION_MULTIPLE,
@@ -368,8 +366,8 @@ class Pregunta extends Model
                 ],
                 'explicacion' => 'En un sistema de control de acceso biométrico: Elemento a controlar → el acceso al celular, Objetivo → lograr acceso autorizado, Control → sistema de huella digital, Sensor → subsistema de toma, Grupo de control → subsistema de comparación, Grupo activante → subsistema de acceso.',
                 'categoria' => 'Sistemas de Control'
-            ],*/
-            /*[
+            ],
+            [
                 'id' => 18,
                 'pregunta' => 'Para que un BCP se active, las operaciones en cuestión deben ser las operaciones _____ del negocio.',
                 'tipo' => self::TIPO_COMPLETAR,
@@ -436,7 +434,7 @@ class Pregunta extends Model
                 'respuesta_correcta' => 'c',
                 'explicacion' => 'Un ROI del 50% significa que por cada peso invertido, recuperas tu inversión inicial más 50% adicional (medio peso más).',
                 'categoria' => 'Análisis Financiero'
-            ],*/
+            ],
             [
                 'id' => 23,
                 'pregunta' => 'Asocie correctamente cada elemento con su tipo de control correspondiente',
@@ -496,7 +494,7 @@ class Pregunta extends Model
                 'explicacion' => 'Cada escenario amenaza un principio de seguridad específico: sin auditoría → no repudio, escalamiento de privilegios → autenticidad, acceso físico → integridad, robo de contraseñas → confidencialidad, pérdida física → disponibilidad.',
                 'categoria' => 'Principios de Seguridad'
             ],
-            /*[
+            [
                 'id' => 25,
                 'pregunta' => 'Según COBIT, que la información sea relevante y pertinente para los procesos de negocio y se proporcione de una manera oportuna, consistente y utilizable se refiere a:',
                 'tipo' => self::TIPO_SELECCION_UNICA,
@@ -509,7 +507,7 @@ class Pregunta extends Model
                 'respuesta_correcta' => 'b',
                 'explicacion' => 'La eficacia en COBIT se refiere a que la información sea relevante, pertinente, oportuna, consistente y utilizable para los procesos de negocio.',
                 'categoria' => 'COBIT'
-            ],*/
+            ],
             [
                 'id' => 26,
                 'pregunta' => 'Asocie Objetivo de control con Dominio Val IT',
@@ -533,7 +531,7 @@ class Pregunta extends Model
                 'explicacion' => 'En VAL IT: Gestión de la Inversión define casos de negocio, Gobierno de Valor define características de cartera, y Gestión de la Cartera evalúa y prioriza inversiones.',
                 'categoria' => 'VAL IT'
             ],
-            /*[
+            [
                 'id' => 27,
                 'pregunta' => 'Etapa ITIL donde se provee un servicio de atención al cliente:',
                 'tipo' => self::TIPO_SELECCION_UNICA,
@@ -546,7 +544,7 @@ class Pregunta extends Model
                 'respuesta_correcta' => 'c',
                 'explicacion' => 'La operación del servicio es la etapa donde se proveen los servicios de atención al cliente y se ejecutan las operaciones diarias.',
                 'categoria' => 'ITIL'
-            ],*/
+            ],
             [
                 'id' => 28,
                 'pregunta' => 'Cuál de las siguientes expresa mejor la diferencia entre tratamiento del riesgo y mitigación del riesgo:',
@@ -561,7 +559,7 @@ class Pregunta extends Model
                 'explicacion' => 'La mitigación puede reducir tanto la probabilidad como el impacto del riesgo, mientras que el tratamiento es un concepto más amplio que incluye mitigación, aceptación, transferencia y evitación.',
                 'categoria' => 'Gestión de Riesgos'
             ],
-            /*[
+            [
                 'id' => 29,
                 'pregunta' => 'Cómo se complementa la ISO27001 con la ISO27002, o sea en qué etapa de la implementación de la ISO27001 se incluye o utiliza en mayor medida la ISO27002?',
                 'tipo' => self::TIPO_SELECCION_UNICA,
@@ -574,7 +572,7 @@ class Pregunta extends Model
                 'respuesta_correcta' => 'b',
                 'explicacion' => 'ISO27002 proporciona controles específicos que se utilizan principalmente en la fase de tratamiento de riesgos de ISO27001.',
                 'categoria' => 'ISO 27001/27002'
-            ],*/
+            ],
             [
                 'id' => 30,
                 'pregunta' => 'Cuáles de los siguientes son elementos en común que tienen los modelos o estándares de control genéricos vistos (ITIL, COBIT, ISO27001, ISO27002):',
@@ -632,7 +630,7 @@ class Pregunta extends Model
                 'explicacion' => 'Aunque técnicamente es posible usar ISO27002 independientemente, pierde su efectividad sin el marco de gestión de ISO27001.',
                 'categoria' => 'ISO 27001/27002'
             ],
-            /*[
+            [
                 'id' => 34,
                 'pregunta' => 'COBIT 5 es la integración de COBIT 4.1 junto a los modelos VAL IT y RISK IT, que permiten una separación clara entre de la Gobernanza y Gestión de TI',
                 'tipo' => self::TIPO_VERDADERO_FALSO,
@@ -667,7 +665,7 @@ class Pregunta extends Model
                 'respuesta_correcta' => 'estudiante',
                 'explicacion' => 'En un sistema de control académico, el estudiante es el grupo activante que debe responder a las acciones correctivas del docente.',
                 'categoria' => 'Sistemas de Control'
-            ],*/
+            ],
             [
                 'id' => 37,
                 'pregunta' => 'Un programador que también es usuario de una aplicación que él mismo desarrolló para una empresa, podría cometer fraude aprovechando su doble rol. Valor amenazado:',
@@ -696,7 +694,7 @@ class Pregunta extends Model
                 'explicacion' => 'El escalamiento de privilegios compromete la autenticidad al permitir que alguien actúe con credenciales que no le corresponden.',
                 'categoria' => 'Principios de Seguridad'
             ],
-            /*[
+            [
                 'id' => 39,
                 'pregunta' => 'Si la variable observada es un número de 8 dígitos pasando por la sintaxis semántica y relevancia, un ejemplo de información en relación a esa variable podría ser:',
                 'tipo' => self::TIPO_SELECCION_UNICA,
@@ -709,7 +707,7 @@ class Pregunta extends Model
                 'respuesta_correcta' => 'd',
                 'explicacion' => 'La información más completa incluye contexto específico y relevancia personal, como la relación académica.',
                 'categoria' => 'Gestión de Información'
-            ],*/
+            ],
             [
                 'id' => 40,
                 'pregunta' => 'Cuáles de los siguientes son un control de influencia directiva:',
@@ -752,7 +750,7 @@ class Pregunta extends Model
                 'explicacion' => 'En COBIT: los procesos de TI (no recursos) proveen información, y las necesidades del negocio conducen las inversiones en TI.',
                 'categoria' => 'COBIT'
             ],
-            /*[
+            [
                 'id' => 43,
                 'pregunta' => 'Además de la ISO31000, para la gestión de riesgos, el auditor puede utilizar otro estándar ISO muy conocido y muy aplicable a todo entorno de control, este estándar es la ISO:',
                 'tipo' => self::TIPO_COMPLETAR,
@@ -760,7 +758,7 @@ class Pregunta extends Model
                 'respuesta_correcta' => '27005',
                 'explicacion' => 'ISO 27005 es el estándar específico para gestión de riesgos de seguridad de la información.',
                 'categoria' => 'Estándares ISO'
-            ],*/
+            ],
             [
                 'id' => 44,
                 'pregunta' => 'Si el emisor encripta un mensaje con la clave pública del receptor, entonces se garantiza:',
@@ -775,7 +773,7 @@ class Pregunta extends Model
                 'explicacion' => 'Encriptar con la clave pública del receptor garantiza que solo él puede descifrarlo con su clave privada, asegurando confidencialidad.',
                 'categoria' => 'Criptografía'
             ],
-            /*[
+            [
                 'id' => 45,
                 'pregunta' => 'Qué algoritmos se podrían usar en una firma digital:',
                 'tipo' => self::TIPO_SELECCION_UNICA,
@@ -788,7 +786,7 @@ class Pregunta extends Model
                 'respuesta_correcta' => 'a',
                 'explicacion' => 'Las firmas digitales requieren algoritmos asimétricos (para firmar/verificar) y de hashing (para resumir el mensaje).',
                 'categoria' => 'Criptografía'
-            ],*/
+            ],
             [
                 'id' => 46,
                 'pregunta' => 'Asocie Proceso con Actividad relacionada en función a su objetivo de control',
@@ -858,6 +856,158 @@ class Pregunta extends Model
                 ],
                 'explicacion' => 'El proceso correcto de auditoría es: 1) Planeación (definir objetivos y alcance), 2) Programa de auditoría (diseñar procedimientos), 3) Recolección de evidencia (ejecutar pruebas), 4) Evaluación de fortalezas y debilidades del control (análisis), 5) Informe de auditoría (reportar hallazgos), 6) Monitoreo (seguimiento de recomendaciones).',
                 'categoria' => 'Proceso de Auditoría'
+            ],
+            [
+                'id' => 48,
+                'pregunta' => 'Cuáles de los siguientes son beneficios de los SLAs?',
+                'tipo' => self::TIPO_SELECCION_MULTIPLE,
+                'opciones' => [
+                    'a' => 'Resolución efectiva de problemas',
+                    'b' => 'Conocimiento de la calidad del servicio de manera formal por parte del usuario',
+                    'c' => 'Acreditacion de sistemas',
+                    'd' => 'Cuantificación del uso del Servicio informático'
+                ],
+                'respuesta_correcta' => ['b', 'd'],
+                'explicacion' => 'Los SLAs (Service Level Agreements) proporcionan conocimiento formal de la calidad del servicio y permiten cuantificar el uso del servicio informático.',
+                'categoria' => 'SLAs'
+            ],
+            [
+                'id' => 49,
+                'pregunta' => 'La etapa del BCP que mide peligrosidad de los riesgos y determina los activos más criticos y el tipo de interrupción que podrían causar en el negocio se llama:',
+                'tipo' => self::TIPO_SELECCION_UNICA,
+                'opciones' => [
+                    'a' => 'Determinación del Tiempo de Recuperación',
+                    'b' => 'Análisis de Impacto del Negocio',
+                    'c' => 'Análisis de Riesgos del Negocio',
+                    'd' => 'Evaluación de Riesgos de Continuidad'
+                ],
+                'respuesta_correcta' => 'b',
+                'explicacion' => 'El Análisis de Impacto del Negocio (BIA) es la etapa que evalúa la peligrosidad de los riesgos y determina los activos críticos.',
+                'categoria' => 'BCP'
+            ],
+            [
+                'id' => 50,
+                'pregunta' => 'Asocia correctamente los riesgos con procesos de TI que lo controlan',
+                'tipo' => self::TIPO_RELACIONAR,
+                'conceptos' => [
+                    'poca_conciencia' => 'Poca conciencia sobre la seguridad y manejo de incidentes',
+                    'falta_puntos_restauracion' => 'Falta de puntos de restauración ante problemas con modificaciones realizadas',
+                    'perdida_informacion' => 'Perdida de informacion por falta de respaldos',
+                    'robo_equipo' => 'Robo de equipo informatico',
+                    'expectativas_servicio' => 'No se tienen expectativas claras sobre la calidad del servicio del area de sistemas',
+                    'filtracion_proveedores' => 'Filtracion de informacion para la empresa en contratos con proveedores de servicios en la nube'
+                ],
+                'opciones_select' => [
+                    '' => 'Seleccione una opción...',
+                    'educar_capacitar' => 'Educar y capacitar usuarios',
+                    'admin_configuracion' => 'Administrar la configuración',
+                    'asegurar_continuidad' => 'Asegurar continuidad del servicio',
+                    'admin_instalaciones' => 'Administrar las instalaciones',
+                    'definir_niveles_servicio' => 'Definir niveles de servicio',
+                    'admin_servicios_terceros' => 'Administrar Servicios de Terceros'
+                ],
+                'respuesta_correcta' => [
+                    'poca_conciencia' => 'educar_capacitar',
+                    'falta_puntos_restauracion' => 'admin_configuracion',
+                    'perdida_informacion' => 'asegurar_continuidad',
+                    'robo_equipo' => 'admin_instalaciones',
+                    'expectativas_servicio' => 'definir_niveles_servicio',
+                    'filtracion_proveedores' => 'admin_servicios_terceros'
+                ],
+                'explicacion' => 'Cada riesgo tiene un proceso de TI específico que lo controla: poca conciencia → educación, falta de puntos de restauración → administración de configuración, pérdida de información → continuidad del servicio, robo de equipo → administración de instalaciones, expectativas del servicio → definición de niveles de servicio, filtración de proveedores → administración de servicios de terceros.',
+                'categoria' => 'Gestión de Riesgos de TI'
+            ],
+            [
+                'id' => 51,
+                'pregunta' => 'Marque las características que estén asociadas al modelo de Nolan:',
+                'tipo' => self::TIPO_SELECCION_MULTIPLE,
+                'opciones' => [
+                    'a' => 'permite establecer criterios para poder medir grados de cumplimiento de las KPIs',
+                    'b' => 'permite valorar el grado de madurez en el uso de las TI en una organización',
+                    'c' => 'Establece un ciclo de vida para mejorar el servicio de TI en las empresas',
+                    'd' => 'La gerencia y usuarios son demandantes de TI, mientras que los tecnicos y aplicaciones son los Proveedores de TI',
+                    'e' => 'Permite mejorar la inversión en proyectos de TI a partir del crecimiento que se ve',
+                    'f' => 'Permite identificar en que fase de crecimiento Ti estamos'
+                ],
+                'respuesta_correcta' => ['b', 'e', 'f'],
+                'explicacion' => 'El modelo de Nolan permite valorar el grado de madurez en TI, mejorar la inversión en proyectos de TI e identificar en qué fase de crecimiento se encuentra la organización.',
+                'categoria' => 'Modelo de Nolan'
+            ],
+            [
+                'id' => 52,
+                'pregunta' => 'Seleccione los elementos que podrían ir en un informe de auditoría:',
+                'tipo' => self::TIPO_SELECCION_MULTIPLE,
+                'opciones' => [
+                    'a' => 'Recomendaciones de Auditoría',
+                    'b' => 'Debilidades del Control',
+                    'c' => 'Hallazgos',
+                    'd' => 'Explicaciones detalladas de las pruebas de Auditoria',
+                    'e' => 'Evidencia Material recolectada',
+                    'f' => 'Fortalezas del Control',
+                    'g' => 'Inventario de Activos Auditados'
+                ],
+                'respuesta_correcta' => ['b', 'c', 'e', 'f'],
+                'explicacion' => 'Un informe de auditoría debe incluir debilidades del control, hallazgos, evidencia material recolectada y fortalezas del control.',
+                'categoria' => 'Informe de Auditoría'
+            ],
+            [
+                'id' => 53,
+                'pregunta' => 'Asocie correctamente Función o Responsabiidad con Unidad de la Dirección de TI:',
+                'tipo' => self::TIPO_RELACIONAR,
+                'conceptos' => [
+                    'monitoreo_servicios' => 'Realizar un monitoreo de los servicios de red que brindan el área usuaria',
+                    'criterios_riesgos' => 'Establecer criterios de aceptación de riesgos en el manejo de información',
+                    'arquitectura_seguridad' => 'Diseñar una arquitectura de seguridad de profundidad para la empresa',
+                    'implementar_equipos' => 'Implementar y configurar equipos de red perimetrales acordadas a una política definida',
+                    'acreditar_aplicaciones' => 'Acreditar y adecuar aplicaciones de negocio a ser instaladas en la empresa'
+                ],
+                'opciones_select' => [
+                    '' => 'Seleccione una opción...',
+                    'operaciones' => 'Operaciones',
+                    'auditoria_sistemas' => 'Auditoria de sistemas',
+                    'seguridad_informacion' => 'Seguridad de la información',
+                    'telecomunicaciones_redes' => 'Telecomunicaciones y redes',
+                    'desarrollo_mantenimiento' => 'Desarrollo y mantenimiento'
+                ],
+                'respuesta_correcta' => [
+                    'monitoreo_servicios' => 'operaciones',
+                    'criterios_riesgos' => 'auditoria_sistemas',
+                    'arquitectura_seguridad' => 'seguridad_informacion',
+                    'implementar_equipos' => 'telecomunicaciones_redes',
+                    'acreditar_aplicaciones' => 'desarrollo_mantenimiento'
+                ],
+                'explicacion' => 'Cada función se asocia con su unidad correspondiente: monitoreo → operaciones, criterios de riesgos → auditoría de sistemas, arquitectura de seguridad → seguridad de la información, equipos de red → telecomunicaciones y redes, aplicaciones → desarrollo y mantenimiento.',
+                'categoria' => 'Organización de TI'
+            ],
+            [
+                'id' => 54,
+                'pregunta' => 'Cuales serian prerrequisitos para aplicar la técnica Delphi correctamente:',
+                'tipo' => self::TIPO_SELECCION_MULTIPLE,
+                'opciones' => [
+                    'a' => 'Tener una lista de riesgo previamente evaluados por mas probable',
+                    'b' => 'Tener una lista priorizada de riesgos',
+                    'c' => 'tener un criterio de comparación establecido',
+                    'd' => 'Tener un panel de expertos del mismo nivel de experiencia',
+                    'e' => 'Tener un escala de comparación de riesgos'
+                ],
+                'respuesta_correcta' => ['c', 'd'],
+                'explicacion' => 'Para aplicar la técnica Delphi correctamente se necesita tener un criterio de comparación establecido y un panel de expertos del mismo nivel de experiencia.',
+                'categoria' => 'Técnica Delphi'
+            ],
+            [
+                'id' => 55,
+                'pregunta' => 'Son principios de COBIT:',
+                'tipo' => self::TIPO_SELECCION_MULTIPLE,
+                'opciones' => [
+                    'a' => 'Satisfacer las necesidades de las partes interesadas',
+                    'b' => 'Aplicar un marco de referencia descentralizado y específico para cada área',
+                    'c' => 'Separar el Gobierno de TI de la Gestión de TI',
+                    'd' => 'Evaluar el desempeño de la Empresa',
+                    'e' => 'Aplicar un marco de referencia único e integrado'
+                ],
+                'respuesta_correcta' => ['a', 'c', 'e'],
+                'explicacion' => 'Los principios de COBIT incluyen: satisfacer las necesidades de las partes interesadas, separar el gobierno de TI de la gestión de TI, y aplicar un marco de referencia único e integrado.',
+                'categoria' => 'Principios COBIT'
             ]
         ];
     }

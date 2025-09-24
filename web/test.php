@@ -28,4 +28,3 @@ if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
 echo "<h3>📋 Enlaces de prueba:</h3>";
 echo '<p><a href="/">🏠 Página Principal</a></p>';
 echo '<p><a href="/examen">📝 Sistema de Exámenes</a></p>';
-echo '<p><a href="/pokemon">🔴 API Pokemon</a></p>';
